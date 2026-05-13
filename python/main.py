@@ -3,7 +3,7 @@ from fastapi import FastAPI
 import uvicorn
 
 prefix = os.environ.get("PREFIX", "/")
-app = FastAPI(root_path=prefix)
+app = FastAPI(root_path=prefix, redirect_slashes=False)
 
 
 @app.get("/")
