@@ -1,7 +1,9 @@
+import os
 from fastapi import FastAPI
 import uvicorn
 
-app = FastAPI()
+prefix = os.environ.get("PREFIX", "/")
+app = FastAPI(root_path=prefix)
 
 
 @app.get("/")
