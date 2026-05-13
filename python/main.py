@@ -6,6 +6,7 @@ import uvicorn
 prefix = os.environ.get("PREFIX", "/")
 app = FastAPI(
     docs_url=prefix + "docs",
+    openapi_url=prefix + "openapi.json",
 )
 
 
