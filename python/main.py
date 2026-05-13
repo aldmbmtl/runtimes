@@ -3,12 +3,13 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 import uvicorn
 
+prefix = os.environ.get("PREFIX", "/")
 app = FastAPI(
-    docs_url=os.environ.get("PREFIX", "/") + "docs",
+    docs_url=prefix + "docs",
 )
 
 
-@app.get(os.environ.get("PREFIX", "/"))
+@app.get(prefix)
 def root():
     return RedirectResponse(url=f"{prefix}docs")
 
