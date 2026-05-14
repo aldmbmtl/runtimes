@@ -1,0 +1,6 @@
+{
+  "name": "juno-runtime-js",
+  "version": "1.0.0",
+  "description": "Juno JS runtime example",
+  "main": "main.js"
+}
