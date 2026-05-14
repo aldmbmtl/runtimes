@@ -75,18 +75,18 @@ static const char *HTML_BODY =
 "</html>\n";
 
 int main() {
-    char *prefix = getenv("PREFIX");
+    const char *prefix = getenv("PREFIX");
     if (!prefix) prefix = "/";
 
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     int opt = 1;
     setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
-    struct sockaddr_in addr = {
-        .sin_family = AF_INET,
-        .sin_addr.s_addr = INADDR_ANY,
-        .sin_port = htons(PORT)
-    };
+    struct sockaddr_in addr;
+    memset(&addr, 0, sizeof(addr));
+    addr.sin_family = AF_INET;
+    addr.sin_addr.s_addr = INADDR_ANY;
+    addr.sin_port = htons(PORT);
     bind(server_fd, (struct sockaddr *)&addr, sizeof(addr));
     listen(server_fd, 10);
 
